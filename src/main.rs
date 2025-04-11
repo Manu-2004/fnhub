@@ -21,7 +21,9 @@ async fn main() -> std::io::Result<()> {
     let wasm_actor = WasmEngineActor {}.start();
 
     //minio
-    let db_server = "http://localhost:9000".parse::<BaseUrl>().unwrap();
+    let db_url = std::env::var("MINIO_ENDPOINT").expect("MINIO_ENDPOINT not set");
+    let db_server = db_url.parse::<BaseUrl>().expect("Invalid MINIO_ENDPOINT");
+    
     dbg!("Connecting to MinIO at: `{:?}`", &db_server);
 
     let static_provider = StaticProvider::new("minioadmin", "minioadmin", None);

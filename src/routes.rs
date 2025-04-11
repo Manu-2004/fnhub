@@ -1,5 +1,5 @@
 use crate::actors::{ExecuteFn, WasmEngineActor};
-use crate::wasmFunction::FunctionMetrics;
+use crate::wasm_function::FunctionMetrics;
 use actix::Addr;
 use actix_multipart::Multipart;
 use actix_web::{get, post, web, HttpResponse, Responder};
@@ -12,7 +12,7 @@ use minio::s3::{
 use tokio::fs::remove_file;
 
 use std::{fs::File, path::Path};
-use std::path::Path;
+use std::path::Path as StdPath;
 use std::fs;
 use std::collections::HashMap;
 
